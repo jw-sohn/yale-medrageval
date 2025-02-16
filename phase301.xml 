@@ -1,0 +1,66 @@
+<View>
+  <!-- Box 0: Guideline-->
+  <View style="background: #00356b; box-shadow: 2px 2px 8px #ccc; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Guideline"/>
+      <Text name="guideline" value="Your task is to evaluate how completely the model's response covers the gold answer statements."/>
+      <Text name="new_line_1" value=""/>
+      <Text name="follow_steps" value="Follow these steps:"/>
+      <Text name="step_1" value="1. Read the question and understand what information is being sought."/>
+      <Text name="step_2" value="2. Compare the model's response with the gold answer statements carefully."/>
+      <Text name="step_3" value="3. For each gold statement, evaluate how completely it is covered in the model's response."/>
+      <Text name="new_line_2" value=""/>
+      <Text name="criteria" value="Coverage Criteria:"/>
+      <Text name="criteria_full" value="✅ Complete Coverage: Model response fully covers all aspects of the gold statement"/>
+      <Text name="criteria_partial" value="⚠️ Partial Coverage: Model response covers some but not all aspects of the gold statement"/>
+      <Text name="criteria_none" value="❌ No Coverage: Model response does not cover the gold statement at all"/>
+    </View>
+  </View>
+  <!-- Main Content -->
+  <View style="background: #00356b; padding: 15px; border-radius: 5px; box-shadow: 1px 1px 5px #aaa;">
+    <!-- Question -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+      <Header value="Question" style="margin-bottom: 10px;"/>
+      <Text name="question" value="$question"/>
+    </View>
+
+    <!-- Model's Response -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+      <Header value="Model's Response" style="margin-bottom: 10px;"/>
+      <Text name="model_response" value="$model_response"/>
+    </View>
+
+    <!-- Gold Answer -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+      <Header value="Gold Answer" style="margin-bottom: 10px;"/>
+      <Text name="gold_answer" value="$gold_answer"/>
+    </View>
+    <!-- Statement Coverage Evaluation -->
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Statement Coverage Evaluation" style="margin-bottom: 15px;"/>
+      
+      <!-- Statement 1 -->
+      <View style="background: #f7faff; padding: 15px; margin-bottom: 10px; border-radius: 5px;" visibleWhen="$statement_1">
+        <Header value="Statement 1"/>
+        <Text name="statement_1" value="$statement_1"/>
+        <Choices name="coverage_level_1" toName="model_response" choice="single" showInline="true">
+          <Choice value="✅ Complete Coverage"/>
+          <Choice value="⚠️ Partial Coverage"/>
+          <Choice value="❌ No Coverage"/>
+        </Choices>
+      </View>
+
+      <!-- Statement 2 -->
+      <View style="background: #f7faff; padding: 15px; margin-bottom: 10px; border-radius: 5px;" visibleWhen="$statement_2">
+        <Header value="Statement 2"/>
+        <Text name="statement_2" value="$statement_2"/>
+        <Choices name="coverage_level_2" toName="model_response" choice="single" showInline="true">
+          <Choice value="✅ Complete Coverage"/>
+          <Choice value="⚠️ Partial Coverage"/>
+          <Choice value="❌ No Coverage"/>
+        </Choices>
+      </View>
+
+    </View>
+  </View>
+</View>

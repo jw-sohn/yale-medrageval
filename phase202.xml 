@@ -1,0 +1,156 @@
+<View>
+  <!-- Box 0: Guideline-->
+  <View style="background: #00356b; box-shadow: 2px 2px 8px #ccc; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Guideline"/>
+      <Text name="guideline" value="Your task is to evaluate whether a decomposed statement from the model's response is citeworthy and, if citeworthy, verify the reference from the model's full response."/>
+      <Text name="new_line_1" value=""/>
+      <Text name="follow_steps" value="Follow these steps:"/>
+      <Text name="step_1" value="1. Read the model's full response, which includes citations."/>
+      <Text name="step_2" value="2. Review the given decomposed statement extracted from the model's response."/>
+      <Text name="step_3" value="3. Determine whether the decomposed statement is 'Citeworthy' or 'Not Citeworthy'."/>
+      <Text name="step_4" value="4. If the statement is citeworthy, determine whether the reference is internal or external."/>
+      <Text name="step_5" value="4.1 If internal, select the corresponding document(s) in Q1 (Internal Reference)."/>
+      <Text name="step_6" value="4.2 If external, proceed to Q2 (External Reference) and verify the reference through sources such as Google Scholar and NIH."/>
+      <Text name="new_line_2" value=""/>
+      <Text name="criteria" value="Selection Criteria:"/>
+      <Text name="criteria_yes" value="✅ Citeworthy: The statement is supported by a valid reference in the model's response."/>
+      <Text name="criteria_no" value="❌ Not Citeworthy: The statement lacks supporting evidence, is unverifiable, or is misleading."/>
+    </View>
+  </View>
+
+  <!-- Main Content -->
+  <View style="background: #00356b; padding: 15px; border-radius: 5px; box-shadow: 1px 1px 5px #aaa;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <!-- Model's Response -->
+      <Header value="Model's Response" style="margin-bottom: 10px;"/>
+      <Text name="model_response" value="$model_response"/>
+
+      <!-- Retrieved Evidences -->
+      <Header value="Retrieved Evidences" style="margin: 15px 0;"/>
+      <Header value="Evidence #1" style="margin-bottom: 10px;"/>
+      <Text name="retrieved_evidence_1" value="$retrieved_evidence_1"/>
+      <Header value="Evidence #2" style="margin-bottom: 10px;"/>
+      <Text name="retrieved_evidence_2" value="$retrieved_evidence_2"/>
+      <!-- References -->
+      <Header value="References" style="margin: 15px 0;"/>
+
+      <Choices name="num_references" toName="model_response" choice="single" showInline="true">
+        <Choice value="1"/>
+        <Choice value="2"/>
+      </Choices>
+
+      <!-- Reference 1 -->
+      <View style="background: #f7faff; border-radius: 5px; padding: 10px; margin: 15px 0;" visibleWhen="$processed_reference">
+        <Header value="Reference 1" style="font-weight: bold; margin: 15px 0 10px 0;"/>
+        <Text name="processed_reference" value="$processed_reference"/>
+        <Header value="Is this reference internal or external?" style="margin: 10px 0;"/>
+        <Choices name="ref_type_1" toName="model_response" choice="single" showInline="true">
+          <Choice value="Internal"/>
+          <Choice value="External"/>
+        </Choices>
+
+        <!-- Q1: Internal Reference -->
+        <View name="internal_reference_q1" visibleWhen="ref_type_1='Internal'">
+          <Header value="Q1 (Internal Reference): Select the corresponding document(s)" style="margin: 10px 0;"/>
+          <Choices name="which_docs_1" toName="model_response" choice="multiple" showInline="true">
+            <Choice value="#1"/>
+            <Choice value="#2"/>
+            <Choice value="#3"/>
+            <Choice value="#4"/>
+            <Choice value="#5"/>
+            <Choice value="#6"/>
+            <Choice value="#7"/>
+            <Choice value="#8"/>
+            <Choice value="#9"/>
+            <Choice value="#10"/>
+            <Choice value="#11"/>
+            <Choice value="#12"/>
+            <Choice value="#13"/>
+            <Choice value="#14"/>
+            <Choice value="#15"/>
+            <Choice value="#16"/>
+            <Choice value="#17"/>
+            <Choice value="#18"/>
+            <Choice value="#19"/>
+            <Choice value="#20"/>
+            <Choice value="#21"/>
+            <Choice value="#22"/>
+            <Choice value="#23"/>
+            <Choice value="#24"/>
+            <Choice value="#25"/>
+            <Choice value="#26"/>
+            <Choice value="#27"/>
+            <Choice value="#28"/>
+            <Choice value="#29"/>
+            <Choice value="#30"/>
+            <Choice value="#31"/>
+            <Choice value="#32"/>
+          </Choices>
+        </View>
+
+        <!-- Q2: External Reference Verification -->
+        <View name="external_reference_q2" visibleWhen="ref_type_1='External'">
+          <Header value="Q2 (External Reference): Verify the reference through Google Scholar or NIH" style="margin: 10px 0;"/>
+          <TextArea name="external_reference_verification" toName="model_response" rows="2" placeholder="Describe if the reference is fully, partially, or not found."/>
+        </View>
+      </View>
+
+      <!-- Reference 2 -->
+      <View style="background: #f7faff; border-radius: 5px; padding: 10px; margin: 15px 0;" visibleWhen="$processed_reference_2">
+        <Header value="Reference 2" style="font-weight: bold; margin: 15px 0 10px 0;"/>
+        <Text name="processed_reference_2" value="$processed_reference_2"/>
+        <Header value="Is this reference internal or external?" style="margin: 10px 0;"/>
+        <Choices name="ref_type_2" toName="model_response" choice="single" showInline="true">
+          <Choice value="Internal"/>
+          <Choice value="External"/>
+        </Choices>
+
+        <!-- Q1: Internal Reference -->
+        <View name="internal_reference_q2_2" visibleWhen="ref_type_2='Internal'">
+          <Header value="Q1 (Internal Reference): Select the corresponding document(s)" style="margin: 10px 0;"/>
+          <Choices name="which_docs_2" toName="model_response" choice="multiple" showInline="true">
+            <Choice value="#1"/>
+            <Choice value="#2"/>
+            <Choice value="#3"/>
+            <Choice value="#4"/>
+            <Choice value="#5"/>
+            <Choice value="#6"/>
+            <Choice value="#7"/>
+            <Choice value="#8"/>
+            <Choice value="#9"/>
+            <Choice value="#10"/>
+            <Choice value="#11"/>
+            <Choice value="#12"/>
+            <Choice value="#13"/>
+            <Choice value="#14"/>
+            <Choice value="#15"/>
+            <Choice value="#16"/>
+            <Choice value="#17"/>
+            <Choice value="#18"/>
+            <Choice value="#19"/>
+            <Choice value="#20"/>
+            <Choice value="#21"/>
+            <Choice value="#22"/>
+            <Choice value="#23"/>
+            <Choice value="#24"/>
+            <Choice value="#25"/>
+            <Choice value="#26"/>
+            <Choice value="#27"/>
+            <Choice value="#28"/>
+            <Choice value="#29"/>
+            <Choice value="#30"/>
+            <Choice value="#31"/>
+            <Choice value="#32"/>
+          </Choices>
+        </View>
+
+        <!-- Q2: External Reference Verification -->
+        <View name="external_reference_q2_2" visibleWhen="ref_type_2='External'">
+          <Header value="Q2 (External Reference): Verify the reference through Google Scholar or NIH" style="margin: 10px 0;"/>
+          <TextArea name="external_reference_verification_2" toName="model_response" rows="2" placeholder="Describe if the reference is fully, partially, or not found."/>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>

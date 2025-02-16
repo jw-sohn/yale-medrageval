@@ -1,0 +1,60 @@
+<View>
+  <!-- Box 0: Guideline-->
+  <View style="background: #00356b; box-shadow: 2px 2px 8px #ccc; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Guideline"/>
+      <Text name="guideline" value="Your task is to evaluate whether a decomposed statement from the model's response is citeworthy and, if citeworthy, verify the reference number from the model's full response."/>
+      <Text name="new_line_1" value=""/>
+      <Text name="follow_steps" value="Follow these steps:"/>
+      <Text name="step_1" value="1. Read the model's full response, which includes citations."/>
+      <Text name="step_2" value="2. Review the given decomposed statement extracted from the model's response."/>
+      <Text name="step_3" value="3. Determine whether the decomposed statement is 'Citeworthy' or 'Not Citeworthy'."/>
+      <Text name="step_4" value="4. If the statement is citeworthy, check and enter the reference number from the model's response."/>
+      <Text name="new_line_2" value=""/>
+      <Text name="criteria" value="Selection Criteria:"/>
+      <Text name="criteria_yes" value="✅ Citeworthy: The statement is supported by a valid reference in the model's response."/>
+      <Text name="criteria_no" value="❌ Not Citeworthy: The statement lacks supporting evidence, is unverifiable, or is misleading."/>
+    </View>
+  </View>
+
+  <!-- Model's Full Response Box -->
+  <View style="background: #00356b; padding: 15px; margin-bottom: 20px; border-radius: 5px; box-shadow: 1px 1px 5px #aaa;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Model's Full Response" style="margin-bottom: 10px;" />
+      <Text name="model_response" value="$model_response" />
+    </View>
+  </View>
+
+  <!-- Model's Statements Box -->
+  <View style="background: #00356b; padding: 15px; border-radius: 5px; box-shadow: 1px 1px 5px #aaa;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Model's Statements" style="margin-bottom: 15px;"/>
+      
+      <!-- Statement 1 -->
+      <View style="background: #f7faff; padding: 15px; margin-bottom: 10px; border-radius: 5px;" visibleWhen="$model_statement_1">
+        <Header value="Statement #1" style="margin-bottom: 5px;"/>
+        <Text name="model_statement_1" value="$model_statement_1" />
+        <Header value="Is it citeworthy?" style="margin-top: 0.5em;" />
+        <Choices name="citeworthy_1" toName="model_statement_1" choice="single" showInline="true">
+          <Choice value="Citeworthy" />
+          <Choice value="Not Citeworthy" />
+        </Choices>
+        <Header value="Reference Number (if citeworthy)" style="margin-top: 0.5em;" />
+        <TextArea name="reference_1" toName="model_statement_1" rows="1" placeholder="e.g. #123" />
+      </View>
+
+      <!-- Statement 2 -->
+      <View style="background: #f7faff; padding: 15px; margin-bottom: 10px; border-radius: 5px;" visibleWhen="$model_statement_2">
+        <Header value="Statement #2" style="margin-bottom: 5px;"/>
+        <Text name="model_statement_2" value="$model_statement_2" />
+        <Header value="Is it citeworthy?" style="margin-top: 0.5em;" />
+        <Choices name="citeworthy_2" toName="model_statement_2" choice="single" showInline="true">
+          <Choice value="Citeworthy" />
+          <Choice value="Not Citeworthy" />
+        </Choices>
+        <Header value="Reference Number (if citeworthy)" style="margin-top: 0.5em;" />
+        <TextArea name="reference_2" toName="model_statement_2" rows="1" placeholder="e.g. #123" />
+      </View>
+    </View>
+  </View>
+</View>

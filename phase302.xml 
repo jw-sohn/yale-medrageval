@@ -1,0 +1,57 @@
+<View>
+  <!-- Box 0: Guideline-->
+  <View style="background: #00356b; box-shadow: 2px 2px 8px #ccc; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Guideline"/>
+      <Text name="guideline" value="Your task is to evaluate the factual accuracy of each statement in the model's response."/>
+      <Text name="new_line_1" value=""/>
+      <Text name="follow_steps" value="Follow these steps:"/>
+      <Text name="step_1" value="1. Read the model's response and gold answer carefully."/>
+      <Text name="step_2" value="2. For each statement in the model's response, assess if it is factually accurate."/>
+      <Text name="new_line_2" value=""/>
+      <Text name="criteria" value="Evaluation Criteria:"/>
+      <Text name="criteria_true" value="✅ True: Statement is factually accurate"/>
+      <Text name="criteria_false" value="❌ False: Statement contains inaccuracies"/>
+    </View>
+  </View>
+
+  <!-- Main Content -->
+  <View style="background: #00356b; padding: 15px; border-radius: 5px; box-shadow: 1px 1px 5px #aaa;">
+    <!-- Model's Response -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+      <Header value="Model's Response" style="margin-bottom: 10px;"/>
+      <Text name="model_response" value="$model_response"/>
+    </View>
+
+    <!-- Gold Answer -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 15px;">
+      <Header value="Gold Answer" style="margin-bottom: 10px;"/>
+      <Text name="gold_answer" value="$gold_answer"/>
+    </View>
+
+    <!-- Statement Assessment -->
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Model Statements Assessment" style="margin-bottom: 15px;"/>
+      
+      <!-- Statement 1 -->
+      <View style="background: #f7faff; padding: 15px; margin-bottom: 10px; border-radius: 5px;" visibleWhen="$model_statement_1">
+        <Header value="Statement #1" style="margin-bottom: 10px;"/>
+        <Text name="model_statement_1" value="$model_statement_1"/>
+        <Choices name="factual_assessment_1" toName="model_statement_1" choice="single" showInline="true">
+          <Choice value="true" html="✅"/>
+          <Choice value="false" html="❌"/>
+        </Choices>
+      </View>
+
+      <!-- Statement 2 -->
+      <View style="background: #f7faff; padding: 15px; margin-bottom: 10px; border-radius: 5px;" visibleWhen="$model_statement_2">
+        <Header value="Statement #2" style="margin-bottom: 10px;"/>
+        <Text name="model_statement_2" value="$model_statement_2"/>
+        <Choices name="factual_assessment_2" toName="model_statement_2" choice="single" showInline="true">
+          <Choice value="true" html="✅"/>
+          <Choice value="false" html="❌"/>
+        </Choices>
+      </View>
+    </View>
+  </View>
+</View>

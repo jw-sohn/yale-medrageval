@@ -1,0 +1,98 @@
+<View>
+  <!-- Box 0: Guideline-->
+  <View style="background: #00356b; box-shadow: 2px 2px 8px #ccc; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Guideline"/>
+      <Text name="guideline" value="Your task is to evaluate whether retrieved evidence supports predefined gold statements."/>
+      <Text name="new_line_1" value=""/>
+      <Text name="follow_steps" value="Follow these steps:"/>
+      <Text name="step_1" value="1. Read the question carefully to understand what information is being sought."/>
+      <Text name="step_2" value="2. Review the retrieved evidence presented below."/>
+      <Text name="step_3" value="3. Select the gold statements of the gold answer that are supported by the evidence."/>
+      <Text name="new_line_2" value=""/>
+      <Text name="criteria" value="Selection Criteria:"/>
+      <Text name="criteria_full" value="✅ Full Support: Select if the evidence fully and clearly supports the statement"/>
+      <Text name="criteria_partial" value="⚠️ Partial Support: Select if the evidence partially or indirectly supports the statement"/>
+      <Text name="criteria_none" value="❌ No Support: Select if the evidence does not support or contradicts the statement"/>
+    </View>
+  </View>
+
+  <!-- Box 1: Main Content -->
+  <View style="background: #00356b; box-shadow: 2px 2px 8px #ccc; border-radius: 5px; padding: 10px;">
+    <!-- Question Box -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+      <Header value="Question"/>
+      <Text name="question" value="$question"/>
+    </View>
+
+    <!-- Gold Answer Box -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+      <Header value="Gold Answer"/>
+      <Text name="gold_answer" value="$gold_answer"/>
+    </View>
+
+    <!-- Evidence Box -->
+    <View style="background: white; border-radius: 5px; padding: 10px; margin-bottom: 10px;">
+      <Header value="Retrieved Evidence" style="margin-bottom: 10px;"/>
+      
+      <Header value="Retrieved Evidence #1" style="margin-bottom: 5px;"/>
+      <Text name="retrieved_evidence_1" value="$retrieved_evidence_1" style="margin-bottom: 10px;"/>
+      
+      <Header value="Retrieved Evidence #2" style="margin-bottom: 5px;"/>
+      <Text name="retrieved_evidence_2" value="$retrieved_evidence_2" style="margin-bottom: 10px;"/>
+      
+      <Header value="Retrieved Evidence #3" style="margin-bottom: 5px;"/>
+      <Text name="retrieved_evidence_3" value="$retrieved_evidence_3" style="margin-bottom: 10px;"/>
+      
+      <Header value="Retrieved Evidence #4" style="margin-bottom: 5px;"/>
+      <Text name="retrieved_evidence_4" value="$retrieved_evidence_4"/>
+    </View>
+
+    <!-- Gold Statements Box -->
+    <View style="background: white; border-radius: 5px; padding: 10px;">
+      <Header value="Gold Statements" style="margin-bottom: 10px;"/>
+      
+      <View style="margin-bottom: 10px;" visibleWhen="$model_statement_1">
+        <Header value="Statement #1" style="margin-bottom: 5px;"/>
+        <Text name="gold_statement_1" value="$model_statement_1"/>
+        <Choices name="support_gold_statement_1" toName="gold_statement_1" choice="single" showInLine="true">
+          <Choice value="full" html="✅ Full"/>
+          <Choice value="partial" html="⚠️ Partial"/>
+          <Choice value="none" html="❌ None"/>
+        </Choices>
+      </View>
+
+      <View style="margin-bottom: 10px;" visibleWhen="$model_statement_2">
+        <Header value="Statement #2" style="margin-bottom: 5px;"/>
+        <Text name="gold_statement_2" value="$model_statement_2"/>
+        <Choices name="support_gold_statement_2" toName="gold_statement_2" choice="single" showInLine="true">
+          <Choice value="full" html="✅ Full"/>
+          <Choice value="partial" html="⚠️ Partial"/>
+          <Choice value="none" html="❌ None"/>
+        </Choices>
+      </View>
+
+      <View style="margin-bottom: 10px;" visibleWhen="$model_statement_3">
+        <Header value="Statement #3" style="margin-bottom: 5px;"/>
+        <Text name="gold_statement_3" value="$model_statement_3"/>
+        <Choices name="support_gold_statement_3" toName="gold_statement_3" choice="single" showInLine="true">
+          <Choice value="full" html="✅ Full"/>
+          <Choice value="partial" html="⚠️ Partial"/>
+          <Choice value="none" html="❌ None"/>
+        </Choices>
+      </View>
+
+      <View style="margin-bottom: 0px;" visibleWhen="$model_statement_4">
+        <Header value="Statement #4" style="margin-bottom: 5px;"/>
+        <Text name="gold_statement_4" value="$model_statement_4"/>
+        <Choices name="support_gold_statement_4" toName="gold_statement_4" choice="single" showInLine="true">
+          <Choice value="full" html="✅ Full"/>
+          <Choice value="partial" html="⚠️ Partial"/>
+          <Choice value="none" html="❌ None"/>
+        </Choices>
+      </View>
+    </View>
+  </View>
+</View>
+<View>
+

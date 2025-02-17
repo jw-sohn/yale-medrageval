@@ -1,0 +1,59 @@
+<View style="background-color: #00356b; padding: 20px; border-radius: 10px;">
+  <!-- Box 0: Guidelines -->
+  <View style="display: flex; flex-direction: column; box-shadow: 2px 2px 5px #999; padding: 10px; border-radius: 5px; background-color: white; font-size: 1.25em; margin-bottom: 20px;">
+    <Header name="guidelines_header" value="Guidelines: " />
+    <Text name="task_guidelines" value="Your task is to evaluate the factual accuracy of each statement in the model's response."/>
+    <Text name="follow_steps" value="Follow these steps:"/>
+    <Text name="step_1" value="1. Read the model's response and gold answer carefully."/>
+    <Text name="step_2" value="2. For each statement in the model's response, assess if it is factually accurate."/>
+    <Text name="new_line_2" value=""/>
+    <Text name="criteria" value="Evaluation Criteria:"/>
+    <Text name="criteria_true" value="✅ True: Statement is factually accurate"/>
+    <Text name="criteria_false" value="❌ False: Statement contains inaccuracies"/>
+  </View>
+
+  <!-- Main Content -->
+  <View>
+    <!-- Model's Response -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <Header name="model_response_header" value="Model's Response"/>
+      <Text name="model_response" value="$model_response"/>
+    </View>
+
+    <!-- Gold Answer -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <Header name="gold_answer_header" value="Gold Answer"/>
+      <Text name="gold_answer" value="$gold_answer"/>
+    </View>
+
+    <!-- Drag and Drop Section -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <List name="model_statements" value="$model_statements" title="Model Statements"/>
+      <Style>
+        .htx-ranker-column {
+          background: #f8f8f8;
+          width: 50%;
+          padding: 20px;
+          border-radius: 3px;
+          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+          margin: 0 10px;
+        }
+    
+        .htx-ranker-item {
+          background: #e0e0e0;
+          color: #333;
+          font-size: 16px;
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 12px;
+          border-radius: 3px;
+          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+        }
+      </Style>
+      <Ranker name="factual_assessment" toName="model_statements">
+        <Bucket name="true_statements" title="✅ True" />
+        <Bucket name="false_statements" title="❌ False" />
+      </Ranker>
+    </View>
+  </View>
+</View>

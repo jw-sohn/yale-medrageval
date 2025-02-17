@@ -1,0 +1,69 @@
+<View style="background-color: #00356b; padding: 20px; border-radius: 10px;">
+  <!-- Box 0: Guidelines -->
+  <View style="display: flex; flex-direction: column; box-shadow: 2px 2px 5px #999; padding: 10px; border-radius: 5px; background-color: white; font-size: 1.25em; margin-bottom: 20px;">
+    <Header name="guidelines_header" value="Guidelines: " />
+    <Text name="task_guidelines" value="Your task is to evaluate how completely the model's response covers the gold answer statements."/>
+    <Text name="follow_steps" value="Follow these steps:"/>
+    <Text name="new_line_1" value=""/>
+    <Text name="step_1" value="1. Read the question and understand what information is being sought."/>
+    <Text name="step_2" value="2. Compare the model's response with the gold answer statements carefully."/>
+    <Text name="step_3" value="3. For each gold statement, evaluate how completely it is covered in the model's response."/>
+    <Text name="new_line_2" value=""/>
+    <Text name="criteria" value="Coverage Criteria:"/>
+    <Text name="criteria_full" value="✅ Complete Coverage: Model response fully covers all aspects of the gold statement"/>
+    <Text name="criteria_partial" value="⚠️ Partial Coverage: Model response covers some but not all aspects of the gold statement"/>
+    <Text name="criteria_none" value="❌ No Coverage: Model response does not cover the gold statement at all"/>
+  </View>
+
+  <!-- Main Content -->
+  <View>
+    <!-- Question Section -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <Header name="question_header" value="Question"/>
+      <Text name="question" value="$question"/>
+    </View>
+
+    <!-- Model's Response -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <Header name="model_response_header" value="Model's Response"/>
+      <Text name="model_response" value="$model_response"/>
+    </View>
+
+    <!-- Gold Answer -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <Header name="gold_answer_header" value="Gold Answer"/>
+      <Text name="gold_answer" value="$gold_answer"/>
+    </View>
+
+    <!-- Drag and Drop Section -->
+    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+      <List name="statements" value="$statements" title="Gold Statements"/>
+      <Style>
+        .htx-ranker-column {
+          background: #f8f8f8;
+          width: 33%;
+          padding: 20px;
+          border-radius: 3px;
+          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+          margin: 0 10px;
+        }
+    
+        .htx-ranker-item {
+          background: #e0e0e0;
+          color: #333;
+          font-size: 16px;
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 12px;
+          border-radius: 3px;
+          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+        }
+      </Style>
+      <Ranker name="coverage_level" toName="statements">
+        <Bucket name="complete_coverage" title="✅ Complete Coverage" style="font-size: 14px;" />
+        <Bucket name="partial_coverage" title="⚠️ Partial Coverage" style="font-size: 14px;" />
+        <Bucket name="no_coverage" title="❌ No Coverage" style="font-size: 14px;" />
+      </Ranker>
+    </View>
+  </View>
+</View>

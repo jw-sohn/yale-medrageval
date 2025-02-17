@@ -1,0 +1,71 @@
+<View style="background: #00356b; padding: 20px;">
+
+  <!-- Box 0: Guideline-->
+  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 20px; box-shadow: 2px 2px 8px #ccc;">
+    <Header value="Guideline"/>
+    <Text name="guideline" value="Your task is to verify references from the model's response by checking if they are internal or external sources."/>
+    <Text name="new_line_1" value=""/>
+    <Text name="follow_steps" value="Follow these steps:"/>
+    <Text name="step_1" value="1. Read the model's full response, which includes citations."/>
+    <Text name="step_2" value="2. For each reference, determine whether it is internal or external."/>
+    <Text name="step_3" value="3. If internal, select the corresponding document(s) in Q1 (Internal Reference)."/>
+    <Text name="step_4" value="4. If external, proceed to Q2 (External Reference) and verify through sources such as Google Scholar and NIH."/>
+    <Text name="new_line_2" value=""/>
+  </View>  
+
+  <!-- Box 1: Question -->
+  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 20px; box-shadow: 2px 2px 8px #ccc;">
+    <Header value="Question" style="margin-bottom: 10px;"/>
+    <Text name="question" value="$question"/>
+  </View>
+
+  <!-- Box 2: Model's Response -->
+  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 20px; box-shadow: 2px 2px 8px #ccc;">
+    <Header value="Model's Response" style="margin-bottom: 10px;"/>
+    <Text name="model_response" value="$model_response"/>
+  </View>
+
+  <!-- Box 3: Retrieved Evidences -->
+  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 20px; box-shadow: 2px 2px 8px #ccc;">
+    <Header value="Retrieved Evidences" style="margin-bottom: 10px;"/>
+    <Text name="evidence_1" value="1. Diabetes Symptoms: Common symptoms of diabetes include excessive thirst, frequent urination, unexplained weight loss, and extreme fatigue. Some patients may also experience blurred vision and slow-healing wounds."/>
+    <Text name="evidence_2" value="2. Diabetes Treatment: Treatment options for diabetes typically include regular blood glucose monitoring, insulin injections or oral medications, a healthy diet, and regular exercise. Some patients may need to check their blood sugar levels multiple times per day."/>
+  </View>
+
+
+  <!-- Box 4: References -->
+  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 20px; box-shadow: 2px 2px 8px #ccc;">
+    <Header value="References" style="margin: 15px 0;"/>
+    <Text name="reference" value="$reference"/>
+    <Choices name="reference_type" toName="model_response" choice="single" showInline="true">
+      <Choice value="Internal"/>
+      <Choice value="External"/>
+    </Choices>
+
+    <View whenChoiceValue="Internal">
+      <Choices name="internal_docs" toName="model_response" choice="multiple" showInline="true">
+        <Choice value="#1"/><Choice value="#2"/><Choice value="#3"/><Choice value="#4"/>
+        <Choice value="#5"/><Choice value="#6"/><Choice value="#7"/><Choice value="#8"/>
+        <Choice value="#9"/><Choice value="#10"/><Choice value="#11"/><Choice value="#12"/>
+        <Choice value="#13"/><Choice value="#14"/><Choice value="#15"/><Choice value="#16"/>
+        <Choice value="#17"/><Choice value="#18"/><Choice value="#19"/><Choice value="#20"/>
+        <Choice value="#21"/><Choice value="#22"/><Choice value="#23"/><Choice value="#24"/>
+        <Choice value="#25"/><Choice value="#26"/><Choice value="#27"/><Choice value="#28"/>
+        <Choice value="#29"/><Choice value="#30"/><Choice value="#31"/><Choice value="#32"/>
+      </Choices>
+    </View>
+
+    <View whenChoiceValue="External">
+      <TextArea name="external_verification" toName="model_response" rows="4" 
+                placeholder="Verify the external reference through Google Scholar or NIH. Describe if it is fully, partially, or not found."/>
+    </View>
+  </View>
+  
+<!-- Box 3: Retrieved Evidences -->
+  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 20px; box-shadow: 2px 2px 8px #ccc;">    
+    <List name="retrieved_evidences" value="$retrieved_evidences" title="Retrieved Evidences"/>
+  </View>
+
+
+  
+</View>

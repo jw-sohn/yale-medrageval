@@ -1,52 +1,55 @@
-<View style="background-color: #00356b; padding: 20px; border-radius: 10px;">
+<View name="main" style="background-color: #00356b; padding: 20px;">
   <!-- Box 0: Guidelines -->
-  <View style="display: flex; flex-direction: column; box-shadow: 2px 2px 5px #999; padding: 10px; border-radius: 5px; background-color: white; font-size: 1.25em; margin-bottom: 20px;">
-    <Header name="guidelines_header" value="Guidelines: " />
+  <View name="guidelines" style="background-color: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
+    <Header name="guidelines_header" value="Guidelines:" />
     <Text name="task_guidelines" value="Your task is to evaluate whether a decomposed statement from the model's response is citeworthy and, if citeworthy, verify the reference number from the model's full response." />
+    <Text name="newline_1" value="" />
     <Text name="follow_steps" value="Follow these steps:" />
     <Text name="step_1" value="1. Read the model's full response, which includes citations." />
     <Text name="step_2" value="2. Review the given decomposed statement extracted from the model's response." />
     <Text name="step_3" value="3. Determine whether the decomposed statement is 'Citeworthy' or 'Not Citeworthy'." />
     <Text name="step_4" value="4. If the statement is citeworthy, drag and drop the reference number from the model's response." />
+    <Text name="newline_2" value="" />
     <Text name="criteria" value="Selection Criteria:" />
     <Text name="criteria_yes" value="✅ Citeworthy: The statement is supported by a valid reference in the model's response." />
     <Text name="criteria_no" value="❌ Not Citeworthy: The statement lacks supporting evidence, is unverifiable, or is misleading." />
   </View>
 
-  <!-- Model's Full Response Box -->
-  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
-    <Header name="response_header" value="Model's Full Response"/>
-    <Text name="model_response" value="$model_response" selectable="true"/>
-  </View>
+  <View name="content">
+    <!-- Question Box -->
+    <View name="question_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
+      <Header name="question_header" value="Question"/>
+      <Text name="question" value="$question"/>
+    </View>
 
-  <!-- Model's Statements Box -->
-  <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
-    <Header name="statements_header" value="Model's Statements"/>
-    <List name="statements" value="$statements" title="Statements"/>
-    <Style>
-      .htx-ranker-column {
-        background: #f8f8f8;
-        width: 33%;
-        padding: 20px;
-        border-radius: 3px;
-        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
-        margin: 0 10px;
-      }
-  
-      .htx-ranker-item {
-        background: #e0e0e0;
-        color: #333;
-        font-size: 14px;
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 12px;
-        border-radius: 3px;
-        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
-      }
-    </Style>
-    <Ranker name="citation_level" toName="statements">
-      <Bucket name="citeworthy" title="✅ Citeworthy" />
-      <Bucket name="not_citeworthy" title="❌ Not Citeworthy" />
-    </Ranker>
+    <!-- Model's Full Response Box -->
+    <View name="response_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
+      <Header name="response_header" value="Model's Full Response"/>
+      <Text name="model_response" value="$model_response" selectable="true"/>
+    </View>
+
+    <!-- Model's Statements Box -->
+    <View name="statements_section" style="background: white; padding: 10px; margin: 0; border-radius: 8px;">
+      <List name="model_statements" value="$model_statements" title="Model Statements"/>
+      <Style name="ranker_styles">
+        .htx-ranker-column {
+          background: #f8f8f8;
+          width: 100%;
+          padding: 4px;
+          margin: 0 3px;
+          border-radius: 8px;
+        }
+        .htx-ranker-item {
+          background: #e0e0e0;
+          padding: 4px;
+          margin-bottom: 5px;
+          border-radius: 8px;
+        }
+      </Style>
+      <Ranker name="citation_level" toName="model_statements">
+        <Bucket name="citeworthy" title="✅ Citeworthy" />
+        <Bucket name="not_citeworthy" title="❌ Not Citeworthy" />
+      </Ranker>
+    </View>
   </View>
 </View>

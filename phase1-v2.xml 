@@ -1,103 +1,51 @@
-<View style="background-color: #00356b; padding: 20px; border-radius: 10px;">
-  <!-- Box 0: Guidelines -->
-  <View style="display: flex; flex-direction: column; box-shadow: 2px 2px 5px #999; padding: 10px; border-radius: 5px; background-color: white; font-size: 1.25em; margin-bottom: 20px;">
-    <Header name="guidelines_header" value="Guidelines: " />
-    <Text name="task_guidelines" value="Follow these steps:" />
-    <Text name="guideline_1" value="1. Read the question carefully" />
-    <Text name="guideline_2" value="2. Review the retrieved evidence" />
-    <Text name="guideline_3" value="3. Drag and drop statements into appropriate support categories" />
+<View name="main" style="background-color: #00356b; padding: 20px;">
+  <View name="guidelines" style="background-color: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
+    <Header name="guidelines_header" value="Guidelines:" />
+    <Text name="guidelines_intro" value="Follow these steps:" />
+    <Text name="step1" value="1. Read the question carefully" />
+    <Text name="step2" value="2. Review the retrieved evidence" />
+    <Text name="step3" value="3. Drag and drop statements into appropriate support categories" />
   </View>
 
-  <!-- Box 2: Main Content -->
-  <View>
-    <!-- Question Section -->
-    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+  <View name="content">
+    <View name="question_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
       <Header name="question_header" value="Question"/>
       <Text name="question" value="$question"/>
     </View>
 
-    <!-- Gold Answer Section -->
-    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
+    <View name="answer_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
       <Header name="answer_header" value="Gold Answer"/>
       <Text name="gold_answer" value="$gold_answer"/>
     </View>
-
-    <!-- Evidence Section -->
-    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
-      <Header name="evidence_header" value="Retrieved Evidence"/>
-      <Text name="evidence_1" value="$retrieved_evidence_1"/>
-      <Text name="evidence_2" value="$retrieved_evidence_2"/>
-    </View>
-
-    <!-- Drag and Drop Section -->
-    <View style="background: white; border-radius: 5px; padding: 15px; margin-bottom: 15px; box-shadow: 2px 2px 8px #ccc;">
-      <List name="statements" value="$statements" title="Gold Statements"/>
-      <Style>
+    <View name="ranking_section" style="background: white; padding: 10px; margin: 0 0 15px 0; border-radius: 8px;">
+      <List name="gold_statements" value="$gold_statements" title="Gold Statements"/>
+      <Style name="ranker_styles">
         .htx-ranker-column {
           background: #f8f8f8;
           width: 33%;
-          padding: 20px;
-          border-radius: 3px;
-          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
-          margin: 0 10px;
+          padding: 8px;
+          margin: 0 3px;
+          border-radius: 8px;
         }
-    
         .htx-ranker-item {
-          background: #e0e0e0;
-          color: #333;
-          font-size: 16px;
-          width: 100%;
-          padding: 12px;
-          margin-bottom: 12px;
-          border-radius: 3px;
-          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.1);
+          background: #f0f0f0;
+          padding: 8px;
+          margin-bottom: 5px;
+          border-radius: 8px;
         }
       </Style>
-      <Ranker name="support_level" toName="statements">
+      <Ranker name="support_level" toName="gold_statements">
         <Bucket name="full_support" title="✅ Full Support" />
         <Bucket name="partial_support" title="⚠️ Partial Support" />
         <Bucket name="no_support" title="❌ No Support" />
       </Ranker>
     </View>
+    
   </View>
+      <!-- Retrieved Evidences List Box -->
+    <View name="retrieved_evidences_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
+      <List name="retrieved_evidences" value="$retrieved_evidences" title="Retrieved Evidences" />
+    </View>
+
+  
 </View>
-<!-- {
-"data": {
-  "question": "What is the capital of France?",
-  "gold_answer": "The capital of France is Paris.",
-  "retrieved_evidence_1": "Paris is the capital city of France.",
-  "retrieved_evidence_2": "France has many cities, including Lyon and Marseille.",
-  "statements": [
-    {
-      "title": "Statement 1",
-      "body": "Paris is the capital of France.",
-      "id": "statement_1"
-    },
-    {
-      "title": "Statement 2", 
-      "body": "France has a city named Lyon.",
-      "id": "statement_2"
-    },
-    {
-      "title": "Statement 3",
-      "body": "Paris has the Eiffel Tower.",
-      "id": "statement_3"
-    },
-    {
-      "title": "Statement 4",
-      "body": "",
-      "id": "statement_4"
-    },
-    {
-      "title": "Statement 5",
-      "body": "",
-      "id": "statement_5"
-    },
-    {
-      "title": "Statement 6",
-      "body": "",
-      "id": "statement_6"
-    }
-  ]
-}
-} -->

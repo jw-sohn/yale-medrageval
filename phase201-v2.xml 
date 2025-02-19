@@ -2,17 +2,16 @@
   <!-- Box 0: Guidelines -->
   <View name="guidelines" style="background-color: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
     <Header name="guidelines_header" value="Guidelines:" />
-    <Text name="task_guidelines" value="Your task is to evaluate whether a decomposed statement from the model's response is citeworthy and, if citeworthy, verify the reference number from the model's full response." />
+    <Text name="task_guidelines" value="Your task is to evaluate whether each statement from the model's response requires a citation." />
     <Text name="newline_1" value="" />
     <Text name="follow_steps" value="Follow these steps:" />
-    <Text name="step_1" value="1. Read the model's full response, which includes citations." />
-    <Text name="step_2" value="2. Review the given decomposed statement extracted from the model's response." />
-    <Text name="step_3" value="3. Determine whether the decomposed statement is 'Citeworthy' or 'Not Citeworthy'." />
-    <Text name="step_4" value="4. If the statement is citeworthy, drag and drop the reference number from the model's response." />
+    <Text name="step_1" value="1. Read the model's full response carefully" />
+    <Text name="step_2" value="2. Review each statement from the model's response" />
+    <Text name="step_3" value="3. Determine if the statement requires a citation by dragging it to the appropriate category" />
     <Text name="newline_2" value="" />
-    <Text name="criteria" value="Selection Criteria:" />
-    <Text name="criteria_yes" value="✅ Citeworthy: The statement is supported by a valid reference in the model's response." />
-    <Text name="criteria_no" value="❌ Not Citeworthy: The statement lacks supporting evidence, is unverifiable, or is misleading." />
+    <Text name="criteria" value="Evaluation Criteria:" />
+    <Text name="criteria_yes" value="✅ Citeworthy: Statement makes a specific factual claim that requires evidence or citation" />
+    <Text name="criteria_no" value="❌ Not Citeworthy: Statement does not require citation" />
   </View>
 
   <View name="content">
@@ -22,25 +21,25 @@
       <Text name="question" value="$question"/>
     </View>
 
-    <!-- Model's Full Response Box -->
+    <!-- Model's Response Box -->
     <View name="response_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
-      <Header name="response_header" value="Model's Full Response"/>
+      <Header name="response_header" value="Model's Response"/>
       <Text name="model_response" value="$model_response" selectable="true"/>
     </View>
 
     <!-- Model's Statements Box -->
-    <View name="statements_section" style="background: white; padding: 10px; margin: 0; border-radius: 8px;">
+    <View name="statements_section" style="background: #f9be00; padding: 0px; margin: 0 0 15px 0; border-radius: 8px;">
       <List name="model_statements" value="$model_statements" title="Model Statements"/>
       <Style name="ranker_styles">
         .htx-ranker-column {
-          background: #f8f8f8;
+          background: #ffffff;
           width: 100%;
           padding: 4px;
           margin: 0 3px;
           border-radius: 8px;
         }
         .htx-ranker-item {
-          background: #e0e0e0;
+          background: #fef4d4;
           padding: 4px;
           margin-bottom: 5px;
           border-radius: 8px;

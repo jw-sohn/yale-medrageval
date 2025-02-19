@@ -1,10 +1,20 @@
 <View name="main" style="background-color: #00356b; padding: 20px;">
+  <!-- Box 0: Guidelines -->
   <View name="guidelines" style="background-color: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
     <Header name="guidelines_header" value="Guidelines:" />
+    <Text name="task_guidelines" value="Your task is to evaluate how well the 32 retrieved evidence documents support each gold statement by dragging and dropping them into appropriate categories." />
+    <Text name="newline_1" value="" />
     <Text name="guidelines_intro" value="Follow these steps:" />
-    <Text name="step1" value="1. Read the question carefully" />
-    <Text name="step2" value="2. Review the retrieved evidence" />
-    <Text name="step3" value="3. Drag and drop statements into appropriate support categories" />
+    <Text name="step1" value="1. Read the question and gold answer" />
+    <Text name="step2" value="2. Review each gold statement from the gold answer" />
+    <Text name="step3" value="3. Carefully read through all 32 retrieved evidence documents" />
+    <Text name="step4" value="4. For each gold statement, assess how well it is supported by the retrieved evidences" />
+    <Text name="step5" value="5. Drag and drop statements into categories based on evidence support level" />
+    <Text name="newline_2" value="" />
+    <Text name="criteria" value="Support Level Criteria:" />
+    <Text name="criteria_full" value="✅ Full Support: Statement is fully supported by one or more retrieved evidences" />
+    <Text name="criteria_partial" value="⚠️ Partial Support: Statement is partially supported or only implied by evidence" />
+    <Text name="criteria_none" value="❌ No Support: No retrieved evidences support this statement" />
   </View>
 
   <View name="content">
@@ -17,18 +27,18 @@
       <Header name="answer_header" value="Gold Answer"/>
       <Text name="gold_answer" value="$gold_answer"/>
     </View>
-    <View name="ranking_section" style="background: white; padding: 10px; margin: 0 0 15px 0; border-radius: 8px;">
+    <View name="ranking_section" style="background: #f9be00; padding: 0px; margin: 0 0 15px 0; border-radius: 8px;">
       <List name="gold_statements" value="$gold_statements" title="Gold Statements"/>
       <Style name="ranker_styles">
         .htx-ranker-column {
-          background: #f8f8f8;
+          background: #ffffff;
           width: 33%;
           padding: 8px;
           margin: 0 3px;
           border-radius: 8px;
         }
         .htx-ranker-item {
-          background: #f0f0f0;
+          background: #fef4d4;
           padding: 8px;
           margin-bottom: 5px;
           border-radius: 8px;
@@ -43,7 +53,7 @@
     
   </View>
       <!-- Retrieved Evidences List Box -->
-    <View name="retrieved_evidences_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
+    <View name="retrieved_evidences_section" style="background: white; padding: 0px; margin: 0 0 15px 0; border-radius: 8px;">
       <List name="retrieved_evidences" value="$retrieved_evidences" title="Retrieved Evidences" />
     </View>
 

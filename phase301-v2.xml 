@@ -35,24 +35,24 @@
     </View>
 
     <!-- Drag and Drop Section -->
-    <View name="ranking_section" style="background: white; padding: 15px; margin: 0; border-radius: 8px;">
-      <List name="statements" value="$gold_statements" title="Gold Statements"/>
+    <View name="ranking_section" style="background: #f9be00; padding: 0px; margin: 0; border-radius: 8px;">
+      <List name="gold_statements" value="$gold_statements" title="Gold Statements"/>
       <Style name="ranker_styles">
         .htx-ranker-column {
-          background: #f8f8f8;
+          background: #ffffff;
           width: 33%;
           padding: 8px;
           margin: 0 3px;
           border-radius: 8px;
         }
         .htx-ranker-item {
-          background: #f0f0f0;
+          background: #fef4d4;
           padding: 8px;
           margin-bottom: 5px;
           border-radius: 8px;
         }
       </Style>
-      <Ranker name="coverage_level" toName="statements">
+      <Ranker name="coverage_level" toName="gold_statements">
         <Bucket name="complete_coverage" title="✅ Complete Coverage" />
         <Bucket name="partial_coverage" title="⚠️ Partial Coverage" />
         <Bucket name="no_coverage" title="❌ No Coverage" />

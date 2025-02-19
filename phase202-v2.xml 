@@ -2,14 +2,17 @@
   <!-- Box 0: Guidelines -->
   <View name="guidelines" style="background-color: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
     <Header name="guidelines_header" value="Guidelines:" />
-    <Text name="task_guidelines" value="Your task is to verify references from the model's response by checking if they are internal or external sources." />
+    <Text name="task_guidelines" value="Your task is to validate the current reference from the model's response by matching it to either internal or external sources." />
     <Text name="newline_1" value="" />
     <Text name="follow_steps" value="Follow these steps:" />
-    <Text name="step_1" value="1. Read the model's full response, which includes citations." />
-    <Text name="step_2" value="2. For each reference, determine whether it is internal or external." />
-    <Text name="step_3" value="3. If internal, select the corresponding document(s) in Q1 (Internal Reference)." />
-    <Text name="step_4" value="4. If external, proceed to Q2 (External Reference) and verify through sources such as Google Scholar and NIH." />
+    <Text name="step_1" value="1. Review the current reference being shown." />
+    <Text name="step_2" value="2. Check if this reference refers to an internal or external source." />
+    <Text name="step_3" value="3. For internal references: Identify which of the 32 provided documents it matches and select those specific document numbers." />
+    <Text name="step_4" value="4. For external references: Document the specific external source being referenced (e.g., journal article, book, or website)." />
     <Text name="newline_2" value="" />
+    <Text name="criteria" value="Reference Types:" />
+    <Text name="criteria_internal" value="Internal: Reference matches specific documents from the provided set of 32 evidence documents" />
+    <Text name="criteria_external" value="External: Reference points to specific sources outside the evidence set (provide full source details)" />
   </View>
 
   <View name="content">
@@ -25,17 +28,20 @@
       <Text name="model_response" value="$model_response" />
     </View>
     
-    <!-- References Box -->
-    <View name="references_section" style="background: white; padding: 15px; margin: 0 0 15px 0; border-radius: 8px;">
-      <Header name="references_header" value="References" />
-      <Text name="reference" value="$reference" />
-      <Choices name="reference_type" toName="model_response" choice="single" showInline="true">
-        <Choice value="Internal" />
-        <Choice value="External" />
-      </Choices>
+    <!-- Reference Box -->
+    <View style="background: #f9be00; padding: 10px; margin: 0 0 15px 0; border-radius: 8px;">
+      <View name="reference_section" style="background: white; padding: 15px; margin: 0; border-radius: 8px;">
+        <Header name="reference_header" value="Reference" />
+        <Text name="reference" value="$reference" />
+        <Choices name="reference_type" toName="model_response" choice="single" showInline="true">
+          <Choice value="Internal" />
+          <Choice value="External" />
+        </Choices>
+      </View>
+    </View>
 
       <View whenChoiceValue="Internal">
-        <Choices name="internal_docs" toName="model_response" choice="multiple" showInline="true">
+        <Choices name="internal_docs" toName="reference" choice="multiple" showInline="true">
           <Choice value="#1" /><Choice value="#2" /><Choice value="#3" /><Choice value="#4" />
           <Choice value="#5" /><Choice value="#6" /><Choice value="#7" /><Choice value="#8" />
           <Choice value="#9" /><Choice value="#10" /><Choice value="#11" /><Choice value="#12" />
@@ -48,13 +54,19 @@
       </View>
 
       <View whenChoiceValue="External">
-        <TextArea name="external_verification" toName="model_response" rows="4" 
+        <TextArea name="external_verification" toName="reference" rows="4" 
                   placeholder="Verify the external reference through Google Scholar or NIH. Describe if it is fully, partially, or not found." />
       </View>
-    </View>
-
     <!-- Retrieved Evidences List Box -->
-    <View name="retrieved_evidences_section" style="background: white; padding: 15px; margin: 0; border-radius: 8px;">
+    <View name="retrieved_evidences_section" style="background: white; padding: 0px; margin: 0; border-radius: 8px;">
+      <Style>
+        .htx-ranker-item {
+          background: #fef4d4;
+          padding: 8px;
+          margin-bottom: 5px;
+          border-radius: 8px;
+        }
+      </Style>
       <List name="retrieved_evidences" value="$retrieved_evidences" title="Retrieved Evidences" />
     </View>
   </View>
